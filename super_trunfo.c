@@ -104,12 +104,12 @@ int main(){
     
     printf("Comparação de cartas (Atributo: População):\n\n");//escolhi o atributo população para ser comparado.
     printf("Carta 1 - %s (%s): %d\n", cidade1, estado1, populacao1); //nas instruções anteriores, o estado era pra ser uma letra de A a H. Agora no código está demonstrando como UF.
-    printf("Carta 2 - %s (%s): %d\n", cidade2, estado2, populacao2); //Alterei o código para que o estado reflita a UF, conforme exemplo no desafio.
+    printf("Carta 2 - %s (%s): %d\n\n", cidade2, estado2, populacao2); //Alterei o código para que o estado reflita a UF, conforme exemplo no desafio.
     
     if ( populacao1 > populacao2 ){ 
-        printf("Resultado: Carta 1 (%s) venceu!", cidade1);   
+        printf("Resultado: Carta 1 (%s) venceu!\n", cidade1);   
     } else {
-        printf("Resultado: Carta 2 (%s) venceu!", cidade2);
+        printf("Resultado: Carta 2 (%s) venceu!\n", cidade2);
     }   
     
     return 0;
