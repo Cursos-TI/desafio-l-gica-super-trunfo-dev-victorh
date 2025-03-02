@@ -8,16 +8,15 @@ int main(){
     
     char estado1[10], estado2[10]; 
     //Tive problema com o "Enter" para a alocação de valores como caractere para a variavel estado 2, por esse motivo decidi alterar para string para que o código 
-    //não tivesse erro algum; V2 comentários: No exemplo do tema 2, o estado que antes era uma letra de A a H, agora é o UF padrão do estado. Alterações no código foram
-    //feitas para atender essa mudança.    
+    //não tivesse erro algum;    
     char codigocarta1[4],codigocarta2[4], cidade1[20], cidade2[20]; 
     //embora o exercício demande apenas 3 carecteres para código da carta, no momento da compilação a questão do "Enter" as vezes ser considerado caractere acabou ocasionando um
     //problema na atribuição do valor correto para a variável. Por esse motivo aumentei a string dos codigos em uma unidade e funcionou. 
-    int populacao1, populacao2, pontosturisticos1, pontosturisticos2;
+    int populacao1, populacao2, pontosturisticos1, pontosturisticos2, EscolhaAtributo;
     float area1, area2, pib1, pib2, DensPop1, DensPop2, PibPerC1, PibPerC2, SuperPoder1, SuperPoder2;
 
     printf("Favor, digitar a seguir as informacoes da Carta 1!\n"); //informando ao usuário que os dados solicitados a seguir serão referente a carta 1
-    printf("Digite a UF do estado: "); //antes era solicitada uma letra de A-H, agora estamos solicitando a UF, conforme exemplo do Tema 2.
+    printf("Digite a letra do estado (A-H): "); //informando ao usuário que na carta aparecerá a letra de A a H
     scanf("%s", &estado1);
     
     printf("Digite o código da carta (Ex.: A01, D02, H04 etc.): ");//informando ao usuário como o código da carta aparecerá em sua carta
@@ -60,7 +59,7 @@ int main(){
 
 
     printf("Favor, digitar a seguir as informacoes da Carta 2!\n"); //informando ao usuário que os dados solicitados a seguir serão referente a carta 2
-    printf("Digite a UF do estado: "); //antes era solicitada uma letra de A-H, agora estamos solicitando a UF, conforme exemplo do Tema 2.
+    printf("Digite a letra do estado (A-H): "); //informando ao usuário que na carta aparecerá a letra de A a H
     scanf("%s", &estado2);
     
     printf("Digite o código da carta (Ex.: A01, D02, H04 etc.): ");//informando ao usuário como o código da carta aparecerá em sua carta
@@ -102,15 +101,107 @@ int main(){
                                                                                         //Embora ela seja menos efetiva, pois estaremos adicionando um valor irrisório ao cálculo.
 
     
-    printf("Comparação de cartas (Atributo: População):\n\n");//escolhi o atributo população para ser comparado.
-    printf("Carta 1 - %s (%s): %d\n", cidade1, estado1, populacao1); //nas instruções anteriores, o estado era pra ser uma letra de A a H. Agora no código está demonstrando como UF.
-    printf("Carta 2 - %s (%s): %d\n\n", cidade2, estado2, populacao2); //Alterei o código para que o estado reflita a UF, conforme exemplo no desafio.
-    
-    if ( populacao1 > populacao2 ){ 
-        printf("Resultado: Carta 1 (%s) venceu!\n", cidade1);   
-    } else {
-        printf("Resultado: Carta 2 (%s) venceu!\n", cidade2);
-    }   
+    printf("Comparação de cartas. Favor escolher o atributo a ser comparado:\n");
+    printf("1. População\n");
+    printf("2. Área\n");
+    printf("3. PIB\n"); 
+    printf("4. Pontos Turísticos\n");
+    printf("5. Densidade Populacional\n");
+    printf("6. PIB per Capita\n");
+    printf("7. Super Poder\n");
+    printf("Digite de 1 a 7 para escolher o atributo conforme relação acima: ");
+    scanf("%d", &EscolhaAtributo);
+    printf("\n");
+
+    switch (EscolhaAtributo) {
+        case 1:
+            printf("O atributo escolhido foi população.\n");
+            printf("Carta 1 (%s): %d\n", cidade1, populacao1);
+            printf("Carta 2 (%s): %d\n", cidade2, populacao2);
+            if (populacao1 > populacao2){
+                printf("Resultado: Carta 1 (%s) venceu!", cidade1);
+            } else if (populacao1 < populacao2){
+                printf("Resultado: Carta 2 (%s) venceu!", cidade2);
+            } else {
+                printf("Resultado: Empate!");
+            }            
+        break;
+        case 2:
+            printf("O atributo escolhido foi área.\n");
+            printf("Carta 1 (%s): %.2f\n", cidade1, area1);
+            printf("Carta 2 (%s): %.2f\n", cidade2, area2);
+            if (area1 > area2){
+                printf("Resultado: Carta 1 (%s) venceu!", cidade1);
+            } else if (area1 < area2){
+                printf("Resultado: Carta 2 (%s) venceu!", cidade2);
+            } else {
+                printf("Resultado: Empate!");
+            }
+        break;
+        case 3:
+            printf("O atributo escolhido foi PIB.\n");
+            printf("Carta 1 (%s): %.2f\n", cidade1, pib1);
+            printf("Carta 2 (%s): %.2f\n", cidade2, pib2);
+            if (pib1 > pib2){
+                printf("Resultado: Carta 1 (%s) venceu!", cidade1);
+            } else if (pib1 < pib2){
+                printf("Resultado: Carta 2 (%s)venceu!", cidade2);
+            } else {
+                printf("Resultado: Empate!");
+            }
+        break;
+        case 4:
+            printf("O atributo escolhido foi Pontos Turísticos.\n");
+            printf("Carta 1 (%s): %d\n", cidade1, pontosturisticos1);
+            printf("Carta 2 (%s): %d\n", cidade2, pontosturisticos2);
+            if (pontosturisticos1 > pontosturisticos2){
+                printf("Resultado: Carta 1 (%s) venceu!", cidade1);
+            } else if (pontosturisticos1 < pontosturisticos2){
+                printf("Resultado: Carta 2 (%s) venceu!", cidade2);
+            } else {
+                printf("Resultado: Empate!");
+            }
+        break;
+        case 5:
+            printf("O atributo escolhido foi Densidade Populacional.\n");
+            printf("Carta 1 (%s): %.2f\n", cidade1, DensPop1);
+            printf("Carta 2 (%s): %.2f\n", cidade2, DensPop2);
+            if (DensPop1 < DensPop2){
+                printf("Resultado: Carta 1 (%s) venceu!", cidade1);
+            } else if (DensPop1 > DensPop2){
+                printf("Resultado: Carta 2 (%s) venceu!", cidade2);
+            } else {
+                printf("Resultado: Empate!");
+            }   
+        break;
+        case 6:
+            printf("O atributo escolhido foi PIB per Capita.\n");
+            printf("Carta 1 (%s): %.2f\n", cidade1, PibPerC1);
+            printf("Carta 2 (%s): %.2f\n", cidade2, PibPerC2);
+            if (PibPerC1 > PibPerC2){
+                printf("Resultado: Carta 1 (%s) venceu!", cidade1);
+            } else if (PibPerC1 < PibPerC2){
+                printf("Resultado: Carta 2 (%s) venceu!", cidade2);
+            } else {
+                printf("Resultado: Empate!");
+            }
+        break;
+        case 7:
+            printf("O atributo escolhido foi Super Poder.\n");
+            printf("Carta 1 (%s): %.2f\n", cidade1, SuperPoder1);
+            printf("Carta 2 (%s): %.2f\n", cidade2, SuperPoder2);
+            if (SuperPoder1 > SuperPoder2){
+                printf("Resultado: Carta 1 (%s) venceu!", cidade1);
+            } else if (SuperPoder1 < SuperPoder2){
+                printf("Resultado: Carta 2 (%s) venceu!", cidade2);
+            } else {
+                printf("Resultado: Empate!");
+            }
+        break;
+        default:
+            printf("Opção inválida!");
+        break;
+    }  
     
     return 0;
 }
